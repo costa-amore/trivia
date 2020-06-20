@@ -9,6 +9,7 @@ import java.io.PrintStream;
 
 public class TestsThatAssertViaTheLog {
     private static PrintStream old;
+    protected ByteArrayOutputStream log;
 
     @BeforeAll
     static void prepareToCaptureLogging(){
@@ -18,6 +19,7 @@ public class TestsThatAssertViaTheLog {
     @BeforeEach
     void ArrangeAndAct(){
         arrange();
+        log = captureTheLogging();
         act();
     }
 
@@ -30,7 +32,7 @@ public class TestsThatAssertViaTheLog {
         System.setOut(old);
     }
 
-    protected ByteArrayOutputStream captureTheLogging() {
+    private ByteArrayOutputStream captureTheLogging() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
         System.setOut(ps);
