@@ -66,67 +66,6 @@ public class Game {
 		}
 	}
 
-	private void CurrentPlayerTakesTurnWith(int rollResult) {
-		moveCurrentPlayerBy(rollResult);
-		announceCurrentPlayersNewPosition();
-		askQuestion();
-	}
-
-	private void moveCurrentPlayerBy(int rollResult) {
-		places[currentPlayer] = places[currentPlayer] + rollResult;
-		if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-	}
-
-	private void announceCurrentPlayersNewPosition() {
-		System.out.println(players.get(currentPlayer)
-				+ "'s new location is "
-				+ places[currentPlayer]);
-		System.out.println("The category is " + currentCategory());
-	}
-
-	private void announceCurrentPlayerIsStayingInThePenaltyBox() {
-		System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
-	}
-
-	private void announceCurrentPlayerIsGettingOutOfPenaltyBox() {
-		System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
-	}
-
-	private boolean oneChanceInTwo(int rollResult) {
-		return rollResult % 2 != 0;
-	}
-
-	private void announceCurrentPlayerRolled(int roll) {
-		System.out.println(players.get(currentPlayer) + " is the current player");
-		System.out.println("They have rolled a " + roll);
-	}
-
-
-	private void askQuestion() {
-		if (currentCategory() == "Pop")
-			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
-			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
-			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
-			System.out.println(rockQuestions.removeFirst());
-	}
-
-
-	private String currentCategory() {
-		if (places[currentPlayer] == 0) return "Pop";
-		if (places[currentPlayer] == 4) return "Pop";
-		if (places[currentPlayer] == 8) return "Pop";
-		if (places[currentPlayer] == 1) return "Science";
-		if (places[currentPlayer] == 5) return "Science";
-		if (places[currentPlayer] == 9) return "Science";
-		if (places[currentPlayer] == 2) return "Sports";
-		if (places[currentPlayer] == 6) return "Sports";
-		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
-	}
-
 	public boolean wasCorrectlyAnswered() {
 		if (inPenaltyBox[currentPlayer]){
 			if (isGettingOutOfPenaltyBox) {
@@ -208,6 +147,68 @@ public class Game {
 		places[howManyPlayers()] = 0;
 		purses[howManyPlayers()] = 0;
 		inPenaltyBox[howManyPlayers()] = false;
+	}
+
+
+	private void CurrentPlayerTakesTurnWith(int rollResult) {
+		moveCurrentPlayerBy(rollResult);
+		announceCurrentPlayersNewPosition();
+		askQuestion();
+	}
+
+	private void moveCurrentPlayerBy(int rollResult) {
+		places[currentPlayer] = places[currentPlayer] + rollResult;
+		if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+	}
+
+	private void announceCurrentPlayersNewPosition() {
+		System.out.println(players.get(currentPlayer)
+				+ "'s new location is "
+				+ places[currentPlayer]);
+		System.out.println("The category is " + currentCategory());
+	}
+
+	private void announceCurrentPlayerIsStayingInThePenaltyBox() {
+		System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
+	}
+
+	private void announceCurrentPlayerIsGettingOutOfPenaltyBox() {
+		System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
+	}
+
+	private boolean oneChanceInTwo(int rollResult) {
+		return rollResult % 2 != 0;
+	}
+
+	private void announceCurrentPlayerRolled(int roll) {
+		System.out.println(players.get(currentPlayer) + " is the current player");
+		System.out.println("They have rolled a " + roll);
+	}
+
+
+	private void askQuestion() {
+		if (currentCategory() == "Pop")
+			System.out.println(popQuestions.removeFirst());
+		if (currentCategory() == "Science")
+			System.out.println(scienceQuestions.removeFirst());
+		if (currentCategory() == "Sports")
+			System.out.println(sportsQuestions.removeFirst());
+		if (currentCategory() == "Rock")
+			System.out.println(rockQuestions.removeFirst());
+	}
+
+
+	private String currentCategory() {
+		if (places[currentPlayer] == 0) return "Pop";
+		if (places[currentPlayer] == 4) return "Pop";
+		if (places[currentPlayer] == 8) return "Pop";
+		if (places[currentPlayer] == 1) return "Science";
+		if (places[currentPlayer] == 5) return "Science";
+		if (places[currentPlayer] == 9) return "Science";
+		if (places[currentPlayer] == 2) return "Sports";
+		if (places[currentPlayer] == 6) return "Sports";
+		if (places[currentPlayer] == 10) return "Sports";
+		return "Rock";
 	}
 
 }
