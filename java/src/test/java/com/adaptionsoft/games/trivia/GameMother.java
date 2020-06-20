@@ -30,7 +30,6 @@ class GameBuilder {
 
 public class GameMother {
 
-
     //Factory
     public static GameMother createGameWithTwoPlayers() {
         return new GameMother(new GameBuilder()
@@ -51,10 +50,17 @@ public class GameMother {
 
     // variations
     public GameMother withPerfectRoundsAlreadyPlayed(int nrOfRoundsPlayed) {
-        int ROLL_RESULT = 1;
+        return WithEveryPerfectRoundEachPlayerRolling(nrOfRoundsPlayed,1);
+    }
+
+    public GameMother WithEveryRoundEachPlayerRolling(int nrOfRoundsPlayed, int rollResultsEachRound) {
+        return WithEveryPerfectRoundEachPlayerRolling(nrOfRoundsPlayed, rollResultsEachRound);
+    }
+
+    public GameMother WithEveryPerfectRoundEachPlayerRolling(int nrOfRoundsPlayed, int rollResultsEachRound) {
         for (int round = 0; round < nrOfRoundsPlayed; round++) {
             for (int player = 0; player < game.howManyPlayers(); player++) {
-                game.roll(ROLL_RESULT);
+                game.roll(rollResultsEachRound);
                 game.wasCorrectlyAnswered();
             }
         }
