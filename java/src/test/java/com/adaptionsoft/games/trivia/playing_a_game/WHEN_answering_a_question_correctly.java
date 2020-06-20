@@ -4,7 +4,6 @@ import com.adaptionsoft.games.trivia.GameMother;
 import com.adaptionsoft.games.trivia.SystemOutInterceptor;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WHEN_answering_a_question_correctly {
 
-    private Game game;
     private static SystemOutInterceptor logInterceptor = new SystemOutInterceptor();
 
     static Stream<Arguments> examples() {
@@ -31,9 +29,10 @@ public class WHEN_answering_a_question_correctly {
 
     @ParameterizedTest @MethodSource("examples")
     void THEN_they_get_gold(int correctAnswers, int expectedGold) {
-        game = GameMother
+
+        Game game = GameMother
                 .createGameWithTwoPlayers()
-                .withPerfectRoundsAlreadyPlayed(correctAnswers-1)//the last answer must be intercepted
+                .withPerfectRoundsAlreadyPlayed(correctAnswers - 1)//the last answer must be intercepted
                 .spawn();
         game.roll(1);
 
