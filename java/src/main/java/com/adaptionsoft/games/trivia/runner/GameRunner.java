@@ -56,7 +56,7 @@ public class GameRunner {
 	}
 
 	private static void rollTheDice(Game aGame, Die d6) {
-		aGame.currentPlayerRolled(d6.roll());
+		aGame.roll(d6.roll());
 	}
 
 	private static boolean oneChanceOutOfNine(Random rand) {

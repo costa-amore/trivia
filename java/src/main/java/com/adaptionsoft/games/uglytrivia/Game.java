@@ -42,7 +42,7 @@ public class Game {
 		return players.size();
 	}
 
-	public void currentPlayerRolled(int rollResult) {
+	public void roll(int rollResult) {
 		Announce.currentPlayerRolled(rollResult, getCurrentPlayerName());
 
 		if (inPenaltyBox[currentPlayer]) {
