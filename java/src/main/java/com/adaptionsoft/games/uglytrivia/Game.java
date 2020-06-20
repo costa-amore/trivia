@@ -35,7 +35,7 @@ public class Game {
 	}
 
 	public boolean add(String playerName) {
-		
+		if (howManyPlayers()==5) return false;
 		
 	    players.add(playerName);
 	    places[howManyPlayers()] = 0;
