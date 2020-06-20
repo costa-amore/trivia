@@ -85,8 +85,8 @@ public class Game {
 	}
 
 	public boolean wrongAnswer(){
-		System.out.println("Question was incorrectly answered");
-		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
+		announceWrongAnswerSentCurrentPlayerToPenaltyBox();
+
 		inPenaltyBox[currentPlayer] = true;
 
 		passToNextPlayer();
@@ -120,6 +120,10 @@ public class Game {
 		System.out.println("They are player number " + players.size());
 	}
 
+	private void announceWrongAnswerSentCurrentPlayerToPenaltyBox() {
+		System.out.println("Question was incorrectly answered");
+		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
+	}
 	private void InitializeLastAddedPlayer() {
 		places[howManyPlayers()] = 0;
 		purses[howManyPlayers()] = 0;
