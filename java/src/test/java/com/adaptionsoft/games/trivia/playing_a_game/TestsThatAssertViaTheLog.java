@@ -2,6 +2,7 @@ package com.adaptionsoft.games.trivia.playing_a_game;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -13,6 +14,15 @@ public class TestsThatAssertViaTheLog {
     static void prepareToCaptureLogging(){
         old = System.out;
     }
+
+    @BeforeEach
+    void ArrangeAndAct(){
+        arrange();
+        act();
+    }
+
+    void arrange() { /* to be implemented if needed by the actual test classes */}
+    void act() {/* to be implemented if needed by the actual test classes */ }
 
     @AfterAll
     static void releaseLogging(){
