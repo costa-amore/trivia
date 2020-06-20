@@ -22,8 +22,8 @@ public class GoldenMaster {
         Assertions.assertThat(log).hasSameTextualContentAs(master);
     }
 
-    @Test
-    @Disabled("only run to generate the golden master")
+//    only run this 'test' to generate the golden master")
+//    @Test
     void Generate_golden_master() throws IOException {
         RunTestAndCaptureLogIn("Golden_master.txt");
     }
