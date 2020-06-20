@@ -17,20 +17,39 @@ public class GameRunner {
 		aGame.add("Sue");
 		
 		Random rand = new Random();
+		Die d6 = new Die(6);
 	
 		do {
 			
-			aGame.roll(rand.nextInt(5) + 1);
+			aGame.currentPlayerRolled(d6.roll());
 			
-			if (rand.nextInt(9) == 7) {
+			if (oneChanceOutOfNine(rand)) {
 				notAWinner = aGame.wrongAnswer();
 			} else {
 				notAWinner = aGame.wasCorrectlyAnswered();
 			}
 			
-			
-			
 		} while (notAWinner);
 		
+	}
+
+	private static boolean oneChanceOutOfNine(Random rand) {
+		return rand.nextInt(9) == 7;
+	}
+
+}
+
+class Die
+{
+	private final int sides;
+	private final Random roll;
+
+	public Die(int sides){
+		roll = new Random();
+		this.sides = sides;
+	}
+
+	int roll(){
+		return roll.nextInt(sides-1)+1;
 	}
 }
