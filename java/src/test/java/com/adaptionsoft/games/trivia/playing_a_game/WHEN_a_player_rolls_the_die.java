@@ -1,6 +1,7 @@
 package com.adaptionsoft.games.trivia.playing_a_game;
 
 import com.adaptionsoft.games.trivia.GameMother;
+import com.adaptionsoft.games.trivia.TestsThatAssertViaTheLog;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -38,13 +39,13 @@ public class WHEN_a_player_rolls_the_die extends TestsThatAssertViaTheLog {
     }
 
     @Override
-    void arrange() {
+    protected void arrange() {
 
         game = GameMother
                 .createGameWithTwoPlayers()
                 .spawn();
-        log = captureTheLogging();
 
+        log = captureTheLogging();
     }
 
     @ParameterizedTest

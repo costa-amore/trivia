@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.trivia.playing_a_game;
+package com.adaptionsoft.games.trivia;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,8 +21,8 @@ public class TestsThatAssertViaTheLog {
         act();
     }
 
-    void arrange() { /* to be implemented if needed by the actual test classes */}
-    void act() {/* to be implemented if needed by the actual test classes */ }
+    protected void arrange() { /* to be implemented if needed by the actual test classes */}
+    protected void act() {/* to be implemented if needed by the actual test classes */ }
 
     @AfterAll
     static void releaseLogging(){
