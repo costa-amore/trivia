@@ -8,18 +8,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class TestsThatAssertViaTheLog {
-    private static PrintStream old;
-    protected ByteArrayOutputStream log;
-
-    @BeforeAll
-    static void prepareToCaptureLogging(){
-        old = System.out;
-    }
+    protected static SystemOutInterceptor logInterceptor = new SystemOutInterceptor();
 
     @BeforeEach
     void ArrangeAndAct(){
         arrange();
-        log = captureTheLogging();
+        logInterceptor.startIntercepting();
         act();
     }
 
@@ -28,8 +22,7 @@ public class TestsThatAssertViaTheLog {
 
     @AfterAll
     static void releaseLogging(){
-        System.out.flush();
-        System.setOut(old);
+        logInterceptor.returnToNormal();
     }
 
     private ByteArrayOutputStream captureTheLogging() {

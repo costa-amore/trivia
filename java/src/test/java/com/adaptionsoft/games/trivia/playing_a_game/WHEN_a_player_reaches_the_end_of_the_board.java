@@ -41,7 +41,7 @@ public class WHEN_a_player_reaches_the_end_of_the_board extends TestsThatAssertV
         game.roll(rolledResult);
 
         Assertions.assertThat(
-                log.toString()).as("from current position: "+ ROUNDS_PLAYED * ROLLS_EACH_ROUND)
+                logInterceptor.readLog()).as("from current position: "+ ROUNDS_PLAYED * ROLLS_EACH_ROUND)
                 .contains("player1's new location is "+ expectedLocation);
     }
 }

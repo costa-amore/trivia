@@ -51,7 +51,7 @@ public class WHEN_a_player_rolls_the_die extends TestsThatAssertViaTheLog {
 
         game.roll(rollResult);
 
-        assertThat(log.toString()).contains("player1's new location is "+ expectedLocation);
+        assertThat(logInterceptor.readLog()).contains("player1's new location is "+ expectedLocation);
     }
 
     @ParameterizedTest @MethodSource("questionCategoryExamples")
@@ -59,6 +59,6 @@ public class WHEN_a_player_rolls_the_die extends TestsThatAssertViaTheLog {
 
         game.roll(rollResult);
 
-        assertThat(log.toString()).contains("The category is "+ expectedQuestionCategory);
+        assertThat(logInterceptor.readLog()).contains("The category is "+ expectedQuestionCategory);
     }
 }
