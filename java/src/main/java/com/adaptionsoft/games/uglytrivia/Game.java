@@ -34,7 +34,7 @@ public class Game {
 	    players.add(playerName);
 		InitializeLastAddedPlayer();
 
-		announcePlayerAddedSuccessfully(playerName);
+		Announce.playerAddedSuccessfully(playerName, players.size());
 		return true;
 	}
 
@@ -43,18 +43,18 @@ public class Game {
 	}
 
 	public void currentPlayerRolled(int rollResult) {
-		announceCurrentPlayerRolled(rollResult);
+		Announce.currentPlayerRolled(rollResult, getCurrentPlayerName());
 
 		if (inPenaltyBox[currentPlayer]) {
 			if (oneChanceInTwo(rollResult)) {
 
 				isGettingOutOfPenaltyBox = true;
-				announceCurrentPlayerIsGettingOutOfPenaltyBox();
+				Announce.currentPlayerIsGettingOutOfPenaltyBox(getCurrentPlayerName());
 				CurrentPlayerTakesTurnWith(rollResult);
 
 			} else {
 
-				announceCurrentPlayerIsStayingInThePenaltyBox();
+				Announce.currentPlayerIsStayingInThePenaltyBox(getCurrentPlayerName());
 				isGettingOutOfPenaltyBox = false;
 
 			}
@@ -70,7 +70,7 @@ public class Game {
 		if (inPenaltyBox[currentPlayer]){
 
 			if (isGettingOutOfPenaltyBox) {
-				announceCurrentPlayerAnsweredCorrectly();
+				Announce.currentPlayerAnsweredCorrectly();
 				return endOfTurn();
 
 			} else {
@@ -79,13 +79,13 @@ public class Game {
 			}
 
 		} else {
-			announceCurrentPlayerAnsweredCorrectly_withTypo();
+			Announce.currentPlayerAnsweredCorrectly_withTypo();
 			return endOfTurn();
 		}
 	}
 
 	public boolean wrongAnswer(){
-		announceWrongAnswerSentCurrentPlayerToPenaltyBox();
+		Announce.wrongAnswerSentCurrentPlayerToPenaltyBox(getCurrentPlayerName());
 
 		inPenaltyBox[currentPlayer] = true;
 
@@ -115,15 +115,10 @@ public class Game {
 	}
 
 
-	private void announcePlayerAddedSuccessfully(String playerName) {
-		System.out.println(playerName + " was added");
-		System.out.println("They are player number " + players.size());
+	private String getCurrentPlayerName() {
+		return (String)players.get(currentPlayer);
 	}
 
-	private void announceWrongAnswerSentCurrentPlayerToPenaltyBox() {
-		System.out.println("Question was incorrectly answered");
-		System.out.println(players.get(currentPlayer)+ " was sent to the penalty box");
-	}
 	private void InitializeLastAddedPlayer() {
 		places[howManyPlayers()] = 0;
 		purses[howManyPlayers()] = 0;
@@ -133,7 +128,7 @@ public class Game {
 
 	private void CurrentPlayerTakesTurnWith(int rollResult) {
 		moveCurrentPlayerBy(rollResult);
-		announceCurrentPlayersNewPosition();
+		Announce.currentPlayersNewPosition(getCurrentPlayerName(), places[currentPlayer], currentCategory());
 		askQuestion();
 	}
 
@@ -142,28 +137,8 @@ public class Game {
 		if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 	}
 
-	private void announceCurrentPlayersNewPosition() {
-		System.out.println(players.get(currentPlayer)
-				+ "'s new location is "
-				+ places[currentPlayer]);
-		System.out.println("The category is " + currentCategory());
-	}
-
-	private void announceCurrentPlayerIsStayingInThePenaltyBox() {
-		System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
-	}
-
-	private void announceCurrentPlayerIsGettingOutOfPenaltyBox() {
-		System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
-	}
-
 	private boolean oneChanceInTwo(int rollResult) {
 		return rollResult % 2 != 0;
-	}
-
-	private void announceCurrentPlayerRolled(int roll) {
-		System.out.println(players.get(currentPlayer) + " is the current player");
-		System.out.println("They have rolled a " + roll);
 	}
 
 
@@ -193,13 +168,9 @@ public class Game {
 	}
 
 
-	private void announceCurrentPlayerAnsweredCorrectly_withTypo() {
-		System.out.println("Answer was corrent!!!!");
-	}
-
 	private boolean endOfTurn() {
 		purses[currentPlayer]++;
-		announceCurrentPlayersNewPurseStatus();
+		Announce.currentPlayersNewPurseStatus(getCurrentPlayerName(), purses[currentPlayer]);
 		boolean currentPlayerWon = didPlayerWin();
 		passToNextPlayer();
 
@@ -209,17 +180,6 @@ public class Game {
 	private void passToNextPlayer() {
 		currentPlayer++;
 		if (currentPlayer == players.size()) currentPlayer = 0;
-	}
-
-	private void announceCurrentPlayersNewPurseStatus() {
-		System.out.println(players.get(currentPlayer)
-				+ " now has "
-				+ purses[currentPlayer]
-				+ " Gold Coins.");
-	}
-
-	private void announceCurrentPlayerAnsweredCorrectly() {
-		System.out.println("Answer was correct!!!!");
 	}
 
 
