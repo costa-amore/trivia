@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.trivia.GameSetup;
+package com.adaptionsoft.games.trivia.starting_a_game;
 
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.params.ParameterizedTest;

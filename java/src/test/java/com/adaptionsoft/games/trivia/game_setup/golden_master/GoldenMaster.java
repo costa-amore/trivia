@@ -1,9 +1,8 @@
-package com.adaptionsoft.games.trivia.GameSetup;
+package com.adaptionsoft.games.trivia.game_setup.golden_master;
 
 import com.adaptionsoft.games.trivia.runner.GameRunner;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

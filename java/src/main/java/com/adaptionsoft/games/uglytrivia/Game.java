@@ -71,7 +71,7 @@ public class Game {
 
 			if (isGettingOutOfPenaltyBox) {
 				Announce.currentPlayerAnsweredCorrectly();
-				return endOfTurn();
+				return winGoldAndEndTurn();
 
 			} else {
 				passToNextPlayer();
@@ -80,7 +80,7 @@ public class Game {
 
 		} else {
 			Announce.currentPlayerAnsweredCorrectly_withTypo();
-			return endOfTurn();
+			return winGoldAndEndTurn();
 		}
 	}
 
@@ -114,7 +114,6 @@ public class Game {
 		return s + " Question " + i;
 	}
 
-
 	private String getCurrentPlayerName() {
 		return (String)players.get(currentPlayer);
 	}
@@ -124,7 +123,6 @@ public class Game {
 		purses[howManyPlayers()] = 0;
 		inPenaltyBox[howManyPlayers()] = false;
 	}
-
 
 	private void CurrentPlayerTakesTurnWith(int rollResult) {
 		moveCurrentPlayerBy(rollResult);
@@ -141,7 +139,6 @@ public class Game {
 		return rollResult % 2 != 0;
 	}
 
-
 	private void askQuestion() {
 		if (currentCategory().equals("Pop"))
 			System.out.println(popQuestions.removeFirst());
@@ -152,7 +149,6 @@ public class Game {
 		if (currentCategory().equals("Rock"))
 			System.out.println(rockQuestions.removeFirst());
 	}
-
 
 	private String currentCategory() {
 		if (places[currentPlayer] == 0) return "Pop";
@@ -167,8 +163,7 @@ public class Game {
 		return "Rock";
 	}
 
-
-	private boolean endOfTurn() {
+	private boolean winGoldAndEndTurn() {
 		purses[currentPlayer]++;
 		Announce.currentPlayersNewPurseStatus(getCurrentPlayerName(), purses[currentPlayer]);
 		boolean currentPlayerWon = didPlayerWin();
