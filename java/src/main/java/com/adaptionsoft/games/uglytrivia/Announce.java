@@ -45,4 +45,8 @@ public class Announce {
     static void currentPlayerAnsweredCorrectly() {
         System.out.println("Answer was correct!!!!");
     }
+
+    static void question(String question) {
+        System.out.println(question);
+    }
 }

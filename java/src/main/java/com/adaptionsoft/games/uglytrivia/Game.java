@@ -110,8 +110,8 @@ public class Game {
 		}
 	}
 
-	private String createQuestion(int i, String s) {
-		return s + " Question " + i;
+	private String createQuestion(int i, String question) {
+		return question + " Question " + i;
 	}
 
 	private String getCurrentPlayerName() {
@@ -140,14 +140,10 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (currentCategory().equals("Pop"))
-			System.out.println(popQuestions.removeFirst());
-		if (currentCategory().equals("Science"))
-			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory().equals("Sports"))
-			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory().equals("Rock"))
-			System.out.println(rockQuestions.removeFirst());
+		if (currentCategory().equals("Pop")) 		Announce.question((String) popQuestions.removeFirst());
+		if (currentCategory().equals("Science")) 	Announce.question((String) scienceQuestions.removeFirst());
+		if (currentCategory().equals("Sports")) 	Announce.question((String) sportsQuestions.removeFirst());
+		if (currentCategory().equals("Rock")) 		Announce.question((String) rockQuestions.removeFirst());
 	}
 
 	private String currentCategory() {
