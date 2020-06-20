@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class GoldenMaster {
 
     public static final String[] ARGUMENTS_WITH_RANDOMIZER_SEED = {"0"};
@@ -18,7 +20,7 @@ public class GoldenMaster {
         File log = RunTestAndCaptureLogIn(addPathTo("RunLog.txt"));
         File master = new File(addPathTo("Golden_master.txt"));
 
-        Assertions.assertThat(log).hasSameTextualContentAs(master);
+        assertThat(log).hasSameTextualContentAs(master);
     }
 
 //    only run this 'test' to generate the golden master")
