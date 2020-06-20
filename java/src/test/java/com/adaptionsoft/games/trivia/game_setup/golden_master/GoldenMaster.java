@@ -23,13 +23,14 @@ public class GoldenMaster {
 
 //    only run this 'test' to generate the golden master")
 //    @Test
+    @SuppressWarnings("unused")
     void Generate_golden_master() throws IOException {
         RunTestAndCaptureLogIn("Golden_master.txt");
     }
 
     private File RunTestAndCaptureLogIn(String logFile) throws IOException {
         final File goldenMaster = new File(logFile);
-        goldenMaster.createNewFile();
+        if (!goldenMaster.createNewFile()) return goldenMaster;
 
         System.setOut(new PrintStream(goldenMaster));
 
