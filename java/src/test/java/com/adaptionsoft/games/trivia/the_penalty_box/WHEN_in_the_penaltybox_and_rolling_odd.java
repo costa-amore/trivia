@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WHEN_in_the_penaltybox extends TestsThatAssertViaTheLog {
+public class WHEN_in_the_penaltybox_and_rolling_odd extends TestsThatAssertViaTheLog {
     public static final int PLAYER1_1st_ROLL = 1;
     public static final int PLAYER1_2nd_ROLL = 1;
     private Game game;
@@ -27,24 +27,19 @@ public class WHEN_in_the_penaltybox extends TestsThatAssertViaTheLog {
                 .spawn();
     }
 
-    private static Stream<Arguments> evenRolls() {
-
-        return Stream.of( Arguments.of(2) ,Arguments.of(4), Arguments.of(6) );
-
-    } @ParameterizedTest @MethodSource("evenRolls")
-    void THEN_you_stay_in_by_rolling_even(int evenRollResult){
-        game.roll(evenRollResult);
-        assertThat(logInterceptor.readLog()).contains("player1 is not getting out of the penalty box");
-    }
-
     private static Stream<Arguments> oddRolls() {
+        return Stream.of(
 
-        return Stream.of( Arguments.of(1) ,Arguments.of(3) ,Arguments.of(5) );
+                Arguments.of(1)
+                ,Arguments.of(3)
+                ,Arguments.of(5)
 
-    } @ParameterizedTest @MethodSource("oddRolls")
-    void THEN_you_get_out_by_rolling_odd(int oddRollResult){
+        ); } @ParameterizedTest @MethodSource("oddRolls")
+    void THEN_you_get_out(int oddRollResult){
+
         game.roll(oddRollResult);
         assertThat(logInterceptor.readLog()).contains("player1 is getting out of the penalty box");
+
     }
 
     @Test

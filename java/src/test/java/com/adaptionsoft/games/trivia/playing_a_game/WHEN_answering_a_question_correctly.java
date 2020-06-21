@@ -29,7 +29,7 @@ public class WHEN_answering_a_question_correctly {
     }
 
     @ParameterizedTest @MethodSource("examples")
-    void THEN_they_get_gold(int correctAnswers, int expectedGold) {
+    void THEN_you_get_gold(int correctAnswers, int expectedGold) {
 
         Game game = GameMother
                 .createGameWithTwoPlayers()

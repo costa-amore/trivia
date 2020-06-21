@@ -46,7 +46,7 @@ public class Game {
 		Announce.currentPlayerRolled(rollResult, getCurrentPlayerName());
 
 		if (inPenaltyBox[currentPlayer]) {
-			if (oneChanceInTwo(rollResult)) {
+			if (isOdd(rollResult)) {
 
 				isGettingOutOfPenaltyBox = true;
 				Announce.currentPlayerIsGettingOutOfPenaltyBox(getCurrentPlayerName());
@@ -135,7 +135,7 @@ public class Game {
 		if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 	}
 
-	private boolean oneChanceInTwo(int rollResult) {
+	private boolean isOdd(int rollResult) {
 		return rollResult % 2 != 0;
 	}
 

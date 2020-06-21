@@ -45,7 +45,7 @@ public class WHEN_a_player_rolls_the_die extends TestsThatAssertViaTheLog {
     }
 
     @ParameterizedTest @MethodSource("locationExamples")
-    void THEN_they_move_that_amount_on_the_board(int rollResult, int expectedLocation) {
+    void THEN_you_move_that_amount_on_the_board(int rollResult, int expectedLocation) {
 
         game.roll(rollResult);
 
@@ -53,7 +53,7 @@ public class WHEN_a_player_rolls_the_die extends TestsThatAssertViaTheLog {
     }
 
     @ParameterizedTest @MethodSource("questionCategoryExamples")
-    void THEN_they_get_a_question_from_the_expected_category(int rollResult, String expectedQuestionCategory) {
+    void THEN_you_get_a_question_from_the_expected_category(int rollResult, String expectedQuestionCategory) {
 
         game.roll(rollResult);
 
