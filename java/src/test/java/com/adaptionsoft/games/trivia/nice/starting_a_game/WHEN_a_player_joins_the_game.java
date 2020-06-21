@@ -13,7 +13,7 @@ public class WHEN_a_player_joins_the_game {
     private PlayerInformation playerInformation;
 
     @BeforeEach
-    private void Given() {
+    void Arrange() {
         Game game = Game.createNewGame()
                 .addPlayer(Player.create("player 1"));
 
