@@ -1,8 +1,6 @@
 package com.adaptionsoft.games.trivia.game_setup.golden_master;
 
 import com.adaptionsoft.games.trivia.runner.GameRunner;
-
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,7 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GoldenMaster {
 
-    public static final String[] ARGUMENTS_WITH_RANDOMIZER_SEED = {"0"};
 
     @Test
     void WHEN_running_the_the_same_game_THEN_the_log_should_be_the_same() throws IOException {
@@ -24,8 +21,8 @@ public class GoldenMaster {
     }
 
 //    only run this 'test' to generate the golden master")
-//    @Test
-    @SuppressWarnings("unused")
+    @Test
+//    @SuppressWarnings("unused")
     void Generate_golden_master() throws IOException {
         RunTestAndCaptureLogIn("Golden_master.txt");
     }
@@ -43,12 +40,14 @@ public class GoldenMaster {
     }
 
     private File RunTestAndCaptureLogIn(String logFileNameAndPath) throws IOException {
-        final File logFile = new File(logFileNameAndPath);
+        final File logFile = new File(addPathTo(logFileNameAndPath));
         if (!logFile.createNewFile()) return logFile;
 
         System.setOut(new PrintStream(logFile));
 
-        GameRunner.main(ARGUMENTS_WITH_RANDOMIZER_SEED);
+        for (int i=0; i<100 ; i++) {
+            GameRunner.main(new String[]{String.valueOf(i)});
+        }
 
         System.setOut(System.out);
 
