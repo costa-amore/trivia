@@ -1,2 +1,3 @@
 target/
 /src/test/java/com/adaptionsoft/games/trivia/game_setup/golden_master/RunLog.txt
+/src/test/java/com/adaptionsoft/games/trivia/ugly/utils/golden_master/RunLog.txt

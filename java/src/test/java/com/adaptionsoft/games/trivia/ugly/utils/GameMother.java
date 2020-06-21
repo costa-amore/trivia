@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.trivia;
+package com.adaptionsoft.games.trivia.ugly.utils;
 
 import com.adaptionsoft.games.uglytrivia.Game;
 

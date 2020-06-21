@@ -1,9 +1,8 @@
-package com.adaptionsoft.games.trivia.playing_a_game;
+package com.adaptionsoft.games.trivia.ugly.playing_a_game;
 
-import com.adaptionsoft.games.trivia.GameMother;
-import com.adaptionsoft.games.trivia.SystemOutInterceptor;
+import com.adaptionsoft.games.trivia.ugly.utils.GameMother;
+import com.adaptionsoft.games.trivia.ugly.utils.SystemOutInterceptor;
 import com.adaptionsoft.games.uglytrivia.Game;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

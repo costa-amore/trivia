@@ -1,6 +1,6 @@
-package com.adaptionsoft.games.trivia.winning_a_game;
+package com.adaptionsoft.games.trivia.ugly.winning_a_game;
 
-import com.adaptionsoft.games.trivia.GameMother;
+import com.adaptionsoft.games.trivia.ugly.utils.GameMother;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.api.Test;
 

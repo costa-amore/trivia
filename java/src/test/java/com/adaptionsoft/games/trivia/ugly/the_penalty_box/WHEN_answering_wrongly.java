@@ -1,9 +1,8 @@
-package com.adaptionsoft.games.trivia.the_penalty_box;
+package com.adaptionsoft.games.trivia.ugly.the_penalty_box;
 
-import com.adaptionsoft.games.trivia.GameMother;
-import com.adaptionsoft.games.trivia.TestsThatAssertViaTheLog;
+import com.adaptionsoft.games.trivia.ugly.utils.GameMother;
+import com.adaptionsoft.games.trivia.ugly.utils.TestsThatAssertViaTheLog;
 import com.adaptionsoft.games.uglytrivia.Game;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

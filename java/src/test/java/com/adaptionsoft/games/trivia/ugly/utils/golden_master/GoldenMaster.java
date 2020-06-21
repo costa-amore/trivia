@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.trivia.game_setup.golden_master;
+package com.adaptionsoft.games.trivia.ugly.utils.golden_master;
 
 import com.adaptionsoft.games.trivia.runner.GameRunner;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class GoldenMaster {
     @Test
     void WHEN_running_the_the_same_game_THEN_the_log_should_be_the_same() throws IOException {
         File log = RunTestAndCaptureLogIn("RunLog.txt");
-        File master = new File("Golden_master.txt");
+        File master = new File(addPathTo("Golden_master.txt"));
 
         assertThat(log).hasSameTextualContentAs(master);
     }
@@ -33,7 +33,7 @@ public class GoldenMaster {
         // I just want to operate the golden master files in the same folder as the goldenmaster code...
         int LAST_PART_OF_THE_PATH_OF_THE_CLASS_WHICH_I_DONT_GET = 20;
         // current implementation will break when the namespace (package name) changes !
-        String RELATIVE_PATH_OF_THE_FOLDER_STRUCTURE_WHERE_THIS_CLASS_IS_STORED = "src/test/java/com/adaptionsoft/games/trivia/game_setup/golden_master/";
+        String RELATIVE_PATH_OF_THE_FOLDER_STRUCTURE_WHERE_THIS_CLASS_IS_STORED = "src/test/java/com/adaptionsoft/games/trivia/ugly/utils/golden_master/";
 
         String pathOfThisJavaClass = GoldenMaster.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         String relativePath = RELATIVE_PATH_OF_THE_FOLDER_STRUCTURE_WHERE_THIS_CLASS_IS_STORED + fileName;

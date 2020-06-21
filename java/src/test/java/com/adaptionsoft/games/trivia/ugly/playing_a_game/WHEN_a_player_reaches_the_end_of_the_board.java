@@ -1,7 +1,7 @@
-package com.adaptionsoft.games.trivia.playing_a_game;
+package com.adaptionsoft.games.trivia.ugly.playing_a_game;
 
-import com.adaptionsoft.games.trivia.GameMother;
-import com.adaptionsoft.games.trivia.TestsThatAssertViaTheLog;
+import com.adaptionsoft.games.trivia.ugly.utils.GameMother;
+import com.adaptionsoft.games.trivia.ugly.utils.TestsThatAssertViaTheLog;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
