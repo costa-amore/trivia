@@ -66,4 +66,16 @@ public class GameMother {
         }
         return this;
     }
+
+    public GameMother with2ndPlayerAnsweringCorrecly() {
+        game.roll(1);
+        game.wasCorrectlyAnswered();
+        return this;
+    }
+
+    public GameMother with1stPlayerInThePenaltyBoxAfterRolling(int rollResult) {
+        game.roll(rollResult);
+        game.wrongAnswer();
+        return this;
+    }
 }
