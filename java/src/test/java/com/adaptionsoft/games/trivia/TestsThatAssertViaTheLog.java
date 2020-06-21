@@ -1,10 +1,10 @@
 package com.adaptionsoft.games.trivia;
 
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class TestsThatAssertViaTheLog {
-    protected static SystemOutInterceptor logInterceptor = new SystemOutInterceptor();
+    protected SystemOutInterceptor logInterceptor = new SystemOutInterceptor();
 
     @BeforeEach
     void ArrangeAndAct(){
@@ -16,8 +16,8 @@ public class TestsThatAssertViaTheLog {
     protected void arrange() { /* to be implemented if needed by the actual test classes */}
     protected void act() {/* to be implemented if needed by the actual test classes */ }
 
-    @AfterAll
-    static void releaseLogging(){
+    @AfterEach
+    void StopInterceptingTheLog(){
         logInterceptor.returnToNormal();
     }
 
