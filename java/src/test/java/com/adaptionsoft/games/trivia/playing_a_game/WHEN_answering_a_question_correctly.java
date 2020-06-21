@@ -4,6 +4,7 @@ import com.adaptionsoft.games.trivia.GameMother;
 import com.adaptionsoft.games.trivia.SystemOutInterceptor;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WHEN_answering_a_question_correctly {
 
-    private static SystemOutInterceptor logInterceptor = new SystemOutInterceptor();
+    private SystemOutInterceptor logInterceptor = new SystemOutInterceptor();
 
     static Stream<Arguments> examples() {
         return Stream.of(
@@ -42,8 +43,8 @@ public class WHEN_answering_a_question_correctly {
         assertThat(logInterceptor.readLog()).contains("player1 now has " + expectedGold + " Gold Coins.");
     }
 
-    @AfterAll
-    static void releaseLogging(){
+    @AfterEach
+    void releaseLogging(){
         logInterceptor.returnToNormal();
     }
 
