@@ -71,7 +71,7 @@ public class Game {
 
 			if (isGettingOutOfPenaltyBox) {
 				Announce.currentPlayerAnsweredCorrectly();
-				return winGoldAndEndTurn();
+				return winGoldAndPassToNextPlayer();
 
 			} else {
 				passToNextPlayer();
@@ -80,7 +80,7 @@ public class Game {
 
 		} else {
 			Announce.currentPlayerAnsweredCorrectly_withTypo();
-			return winGoldAndEndTurn();
+			return winGoldAndPassToNextPlayer();
 		}
 	}
 
@@ -159,7 +159,7 @@ public class Game {
 		return "Rock";
 	}
 
-	private boolean winGoldAndEndTurn() {
+	private boolean winGoldAndPassToNextPlayer() {
 		purses[currentPlayer]++;
 		Announce.currentPlayersNewPurseStatus(getCurrentPlayerName(), purses[currentPlayer]);
 		boolean currentPlayerWon = didPlayerWin();
