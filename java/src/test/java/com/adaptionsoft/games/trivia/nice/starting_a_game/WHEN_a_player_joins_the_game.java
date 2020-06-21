@@ -15,7 +15,7 @@ public class WHEN_a_player_joins_the_game {
     @BeforeEach
     void Arrange() {
         Game game = Game.createNewGame()
-                .addPlayer(Player.create("player 1"));
+                .add(Player.create("player 1"));
 
         playerInformation = GameExporter.export(game).findPlayer("player 1");
     }

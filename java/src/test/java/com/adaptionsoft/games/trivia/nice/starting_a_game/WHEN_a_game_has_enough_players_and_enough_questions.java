@@ -13,14 +13,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WHEN_a_game_has_less_than_2_players {
+public class WHEN_a_game_has_enough_players_and_enough_questions {
     @Test
-    void THEN_the_game_can_NOT_start(){
+    void THEN_the_game_can_start(){
         List<Question> questions = new ArrayList<>(Arrays.asList(Question.create("Q1"), Question.create("Q2")));
         Game game = Game.createNewGame()
                 .add(Jury.createAround(questions))
-                .add(Player.create("1"));
+                .add(Player.create("1"))
+                .add(Player.create("2"));
 
-        assertThat(game).isNotExactlyInstanceOf(StartableGame.class);
+        assertThat(game).isExactlyInstanceOf(StartableGame.class);
     }
 }
