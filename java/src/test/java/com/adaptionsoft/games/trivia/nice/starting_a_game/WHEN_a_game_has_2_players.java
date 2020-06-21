@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.trivia.nice;
+package com.adaptionsoft.games.trivia.nice.starting_a_game;
 
 import com.adaptionsoft.games.nicetrivia.game.Game;
 import com.adaptionsoft.games.nicetrivia.player.Player;
