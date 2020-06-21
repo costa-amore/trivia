@@ -1,4 +1,4 @@
-package com.adaptionsoft.games.trivia.nice;
+package com.adaptionsoft.games.trivia.nice.starting_a_game;
 
 import com.adaptionsoft.games.nicetrivia.game.Game;
 import com.adaptionsoft.games.nicetrivia.player.Player;
@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WHEN_a_game_has_less_than_2_players {
     @Test
-    void THEN_the_game_can_start(){
+    void THEN_the_game_can_NOT_start(){
         Game game = Game.createNewGame()
                 .addPlayer(Player.create("1"));
 
